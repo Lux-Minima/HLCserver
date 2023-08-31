@@ -1,25 +1,47 @@
 {
-  "name": "chainsaw",
+  "name": "hlc-shopidy",
   "version": "1.0.0",
-  "description": "nodejs starter",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+  "description": "hlc server",
+  "main": "lib/app.js",
+  "license": "MIT",
+  "author": "nox maxima",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.5"
   },
+  "devDependencies": {
+    "babel": "~6.5.2",
+    "babel-cli": "~6.11.4",
+    "babel-core": "~6.13.2",
+    "babel-plugin-add-shopify-header": "~1.0.5",
+    "babel-preset-shopify": "~13.0.0",
+    "babel-register": "~6.11.6",
+    "eslint": "~3.3.1",
+    "eslint-plugin-shopify": "~14.0.0",
+    "express": "^4.15.2",
+    "mocha": "~3.0.2",
+    "node-fetch": "^1.6.3",
+    "nodemon": "^1.11.0",
+    "shopify-buy": "^1.2.0"
+  },
+  "scripts": {
+    "prestart": "yarn build",
+    "start": "node lib/app.js",
+    "test": "yarn run lint-allow-warning && mocha --compilers js:babel-register -u tdd test/index.js",
+    "build": "babel -d lib/ src/",
+    "lint": "eslint --max-warnings 0 -c .eslintrc.json src/ test/",
+    "lint-allow-warning": "eslint -c .eslintrc.json src/ test/"
+  },
+  "keywords": [
+    ""
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nonobstant/cypher-magnetism-server.git"
+    "url": "git://github.com/Shopify/storefront-api-examples.git"
   },
-  "author": "nonobstant",
-  "license": "ISC",
+  "homepage": "https://github.com/Shopify/storefront-api-examples",
   "bugs": {
-    "url": "https://github.com/nonobstant/cypher-magnetism-server/issues"
-  },
-  "homepage": "https://github.com/nonobstant/cypher-magnetism-server#readme",
-  "dependencies": {
-    "express": "^4.17.3",
-    "nodemon": "^2.0.15",
-    "socketio": "^1.0.0"
+    "url": "https://github.com/Shopify/storefront-api-examples/issues"
   }
 }
